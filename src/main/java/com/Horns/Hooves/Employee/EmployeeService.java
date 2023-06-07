@@ -16,11 +16,11 @@ public class EmployeeService {
     }
 
     // Добавление сотрудника
-    public void addEmployee(Employee employee) {
+    public void addEmployee(Employee employee) throws EmployeeStorageIsFullException {
         if (employees.size() < MAX_EMPLOYEES) {
             employees.add(employee);
         } else {
-            System.out.println("Достигнуто максимальное количество сотрудников");
+            throw new EmployeeStorageIsFullException("Достигнуто максимальное количество сотрудников.");
         }
     }
 
@@ -33,6 +33,7 @@ public class EmployeeService {
     public int getNumberOfEmployees() {
         return employees.size();
     }
+
 
 }
 
