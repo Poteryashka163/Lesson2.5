@@ -2,20 +2,23 @@ package com.Horns.Hooves.Employee;
 
 public class Employee {
     private String name;
+    private String surname;
     private int id;
     private int salary;
     private String department;
 
-    public Employee(String name, int id, int salary, String department) {
+    public Employee(String name, int id, int salary, String department,String surname) {
         this.name = name;
         this.id = id;
         this.salary = salary;
         this.department = department;
+        this.surname = surname;
     }
 
     public String getName() {
         return name;
     }
+    public String getSurname() {return surname;}
 
     public int getId() {
         return id;

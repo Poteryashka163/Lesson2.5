@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class EmployeeService {
+public class EmployeeService implements EmployeeServiceInterf {
     private List<Employee> employees;
     private final int MAX_EMPLOYEES = 10;
 
@@ -16,6 +16,7 @@ public class EmployeeService {
     }
 
     // Добавление сотрудника
+    @Override
     public void addEmployee(Employee employee) throws EmployeeStorageIsFullException {
         if (employees.size() < MAX_EMPLOYEES) {
             employees.add(employee);
@@ -26,7 +27,10 @@ public class EmployeeService {
 
     // Получение списка всех сотрудников
     public List<Employee> getAllEmployees() {
-        return employees;
+        for (int i = 0; i < employees.size(); i++) {
+            System.out.println(employees.get(i));
+        }
+        return getAllEmployees();
     }
 
     // Получение количества сотрудников в фирме
