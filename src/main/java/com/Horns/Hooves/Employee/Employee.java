@@ -1,5 +1,7 @@
 package com.Horns.Hooves.Employee;
 
+import java.util.Objects;
+
 public class Employee {
     private String name;
     private String surname;
@@ -52,9 +54,24 @@ public class Employee {
         return emp.id == id && emp.name.equals(name);
     }
 
+
     @Override
     public int hashCode() {
         return 31 * name.hashCode() + id;
+    }
+
+
+
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", id=" + id +
+                ", salary=" + salary +
+                ", department='" + department + '\'' +
+                '}';
     }
 }
 
