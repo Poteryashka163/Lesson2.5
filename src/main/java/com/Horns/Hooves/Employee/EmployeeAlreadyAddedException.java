@@ -1,6 +1,6 @@
 package com.Horns.Hooves.Employee;
 
-public class EmployeeAlreadyAddedException extends Exception{
+public class EmployeeAlreadyAddedException extends RuntimeException{
     public EmployeeAlreadyAddedException(String messega){
         super(messega);
     }
