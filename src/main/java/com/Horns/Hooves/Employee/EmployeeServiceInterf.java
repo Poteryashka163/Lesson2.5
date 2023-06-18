@@ -2,11 +2,9 @@ package com.Horns.Hooves.Employee;
 
 public interface EmployeeServiceInterf {
     // Добавление сотрудника
-    void addEmployee(Employee employee) throws EmployeeStorageIsFullException,EmployeeAlreadyAddedException;
-
+    Employee addEmployee(String name, String surname);
     // Удаление сотрудника
-    void delEmployee(Employee employee) throws EmployeeNotFoundException;
-
-    void findEmployee(Employee employee) throws EmployeeNotFoundException;
-
+    Employee delEmployee(String name, String surname);
+    // Поиск сотрудника
+    Employee findEmployee(String name, String surname);
 }

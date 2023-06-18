@@ -18,22 +18,16 @@ public class EmployeeController {
         return "Добро пожаловать в бугалтерскую книгу.";
     }
     @GetMapping(path = "/add")
-    public String add(@RequestParam String name, @RequestParam String surname) throws EmployeeStorageIsFullException,EmployeeAlreadyAddedException {
-        Employee employee = new Employee(name,surname);
-        employeeService.addEmployee(employee);
-        return "Сотрудник "+employee.getName()+" "+employee.getSurname()+" добавлен";
+    public Employee add(@RequestParam String name, @RequestParam String surname) throws EmployeeStorageIsFullException,EmployeeAlreadyAddedException {
+        return employeeService.addEmployee(name,surname);
     }
     @GetMapping(path = "/del")
-    public String del(@RequestParam String name,@RequestParam String surname) throws EmployeeNotFoundException {
-        Employee employee = new Employee(name,surname);
-        employeeService.delEmployee(employee);
-        return "Сотрудник "+employee.getName()+" "+employee.getSurname()+" удален" ;
+    public Employee del(@RequestParam String name,@RequestParam String surname) throws EmployeeNotFoundException {
+        return employeeService.delEmployee(name,surname) ;
     }
     @GetMapping(path = "/find")
-    public String find(@RequestParam String name,@RequestParam String surname) throws EmployeeNotFoundException {
-        Employee employee = new Employee(name,surname);
-        employeeService.findEmployee(employee);
-        return employee.getName() +" "+employee.getSurname() +"Найден." ;
+    public Employee find(@RequestParam String name,@RequestParam String surname) throws EmployeeNotFoundException {
+        return employeeService.findEmployee(name,surname);
     }
     @GetMapping(path = "/all")
     public Collection<Employee> all() {

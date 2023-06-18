@@ -20,8 +20,8 @@ public class EmployeeService implements EmployeeServiceInterf {
 
     // Добавление сотрудника
     @Override
-    public void addEmployee(Employee employee) throws EmployeeStorageIsFullException,EmployeeAlreadyAddedException {
-
+    public Employee addEmployee(String name,String surname) {
+        Employee employee = new Employee(name,surname);
         if (employees.size() < MAX_EMPLOYEES) {
             employees.add(employee);}
         else if (employees.contains(employee)){
@@ -30,24 +30,29 @@ public class EmployeeService implements EmployeeServiceInterf {
         else {
             throw new EmployeeStorageIsFullException("Достигнуто максимальное количество сотрудников.");
         }
+        return employee;
     }
     @Override
     // Удаление сотрудника
-    public void delEmployee(Employee employee) throws EmployeeNotFoundException{
+    public Employee delEmployee(String name, String surname){
+        Employee employee = new Employee(name,surname);
         if (employees.contains(employee)) {
             employees.remove(employee);
         }else {
             throw new EmployeeNotFoundException("Сотрудник не найден.");
         }
+        return employee;
     }
     @Override
     // Поиск сотрудника
-    public void findEmployee(Employee employee) throws EmployeeNotFoundException {
+    public Employee findEmployee(String name,String surname) {
+        Employee employee = new Employee(name,surname);
         if (employees.contains(employee)) {
 
         }else {
             throw new EmployeeNotFoundException("Сотрудник не найден.");
         }
+        return employee;
     }
 
     // Получение списка всех сотрудников
