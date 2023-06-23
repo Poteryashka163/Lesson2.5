@@ -23,7 +23,7 @@ public class EmployeeController {
     }
     @GetMapping(path = "/del")
     public Employee del(@RequestParam String name,@RequestParam String surname) throws EmployeeNotFoundException {
-        return employeeService.delEmployee(name,surname) ;
+        return employeeService.delEmployee(name,surname);
     }
     @GetMapping(path = "/find")
     public Employee find(@RequestParam String name,@RequestParam String surname) throws EmployeeNotFoundException {
