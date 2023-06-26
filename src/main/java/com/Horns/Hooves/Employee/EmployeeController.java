@@ -29,14 +29,29 @@ public class EmployeeController {
     public Employee find(@RequestParam String name,@RequestParam String surname) throws EmployeeNotFoundException {
         return employeeService.findEmployee(name,surname);
     }
-    @GetMapping(path = "/all")
-    public Collection<Employee> all() {
-        return employeeService.getAllEmployees();
 
-    }
     @GetMapping(path = "/size")
     public String size() {
         return "Сотрудников в списке: "+ employeeService.getNumberOfEmployees();
+    }
+
+
+
+    @GetMapping(path = "/departments/max-salary")
+    public Employee maxSalary (@RequestParam int id){
+        return null;
+    }
+    @GetMapping(path = "/departments/min-salary")
+    public Employee minSalary (@RequestParam int id){
+        return null;
+    }
+    @GetMapping(path = "/departments/all")
+    public Employee allId (@RequestParam int id){
+        return null;
+    }
+    @GetMapping(path = "/all")
+    public Collection<Employee> all() {
+        return employeeService.getAllEmployees();
     }
 }
 
