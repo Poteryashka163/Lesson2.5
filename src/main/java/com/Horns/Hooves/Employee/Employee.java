@@ -3,10 +3,10 @@ package com.Horns.Hooves.Employee;
 import java.util.Objects;
 
 public class Employee {
-    public String department;
-    public int salary;
     private String name;
     private String surname;
+    public String department;
+    public int salary;
     public int id;
 
 

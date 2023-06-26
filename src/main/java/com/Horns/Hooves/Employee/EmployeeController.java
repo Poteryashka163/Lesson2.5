@@ -18,16 +18,16 @@ public class EmployeeController {
         return "Добро пожаловать в бугалтерскую книгу.";
     }
     @GetMapping(path = "/add")
-    public Employee add(@RequestParam String name, @RequestParam String surname) throws EmployeeStorageIsFullException,EmployeeAlreadyAddedException {
-        return employeeService.addEmployee(name,surname);
+    public Employee add(@RequestParam String name, @RequestParam String surname,@RequestParam String department,@RequestParam int salary,@RequestParam int id) throws EmployeeStorageIsFullException,EmployeeAlreadyAddedException {
+        return employeeService.addEmployee(name,surname,department,salary,id);
     }
     @GetMapping(path = "/del")
     public Employee del(@RequestParam String name,@RequestParam String surname) throws EmployeeNotFoundException {
-        return employeeService.delEmployee(name,surname);
+        return null;
     }
     @GetMapping(path = "/find")
     public Employee find(@RequestParam String name,@RequestParam String surname) throws EmployeeNotFoundException {
-        return employeeService.findEmployee(name,surname);
+        return null;
     }
 
     @GetMapping(path = "/size")

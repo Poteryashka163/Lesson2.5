@@ -1,6 +1,5 @@
 package com.Horns.Hooves.Employee;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 import java.util.*;
 
@@ -16,9 +15,9 @@ public class EmployeeService implements EmployeeServiceInterf {
 
     // Добавление сотрудника
     @Override
-    public Employee addEmployee(String name,String surname) {
+    public Employee addEmployee(String name, String surname, String department, int salary, int id) {
         var kye = name + "_" + surname;
-        var e = new Employee(name,surname);
+        var e = new Employee(name,surname,department,salary,id);
         if (employees.size() < MAX_EMPLOYEES) {
             employees.putIfAbsent(kye,e);}
         else if (employees.containsKey(kye)){
@@ -31,9 +30,9 @@ public class EmployeeService implements EmployeeServiceInterf {
     }
     @Override
     // Удаление сотрудника
-    public Employee delEmployee(String name, String surname){
+    public Employee delEmployee(String name, String surname, String department, int salary, int id){
         var kye = name + "_" + surname;
-        var e = new Employee(name,surname);
+        var e = new Employee(name,surname,department,salary,id);
         if (employees.containsKey(kye)) {
             employees.remove(kye);
         }else {
@@ -43,9 +42,9 @@ public class EmployeeService implements EmployeeServiceInterf {
     }
     @Override
     // Поиск сотрудника
-    public Employee findEmployee(String name,String surname) {
+    public Employee findEmployee(String name, String surname, String department, int salary, int id) {
         var kye = name + "_" + surname;
-        var e = new Employee(name,surname);
+        var e = new Employee(name,surname,department,salary,id);
         if (employees.containsKey(kye)) {
 
         }else {
@@ -63,6 +62,7 @@ public class EmployeeService implements EmployeeServiceInterf {
     public int getNumberOfEmployees() {
         return employees.size();
     }
+
 
 
 
