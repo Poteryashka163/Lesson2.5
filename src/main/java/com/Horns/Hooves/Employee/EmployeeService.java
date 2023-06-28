@@ -15,7 +15,7 @@ public class EmployeeService implements EmployeeServiceInterf {
 
     // Добавление сотрудника
     @Override
-    public Employee addEmployee(String name, String surname, String department, int salary, int id) {
+    public String addEmployee(String name, String surname, String department, int salary, int id) {
         var kye = name + "_" + surname;
         var e = new Employee(name,surname,department,salary,id);
         if (employees.size() < MAX_EMPLOYEES) {
@@ -26,13 +26,13 @@ public class EmployeeService implements EmployeeServiceInterf {
         else {
             throw new EmployeeStorageIsFullException("Достигнуто максимальное количество сотрудников.");
         }
-        return e;
+        return e.toString();
     }
     @Override
     // Удаление сотрудника
-    public Employee delEmployee(String name, String surname, String department, int salary, int id){
+    public String delEmployee(String name, String surname){
         var kye = name + "_" + surname;
-        var e = new Employee(name,surname,department,salary,id);
+        var e = new Employee(name,surname);
         if (employees.containsKey(kye)) {
             employees.remove(kye);
         }else {
@@ -42,9 +42,9 @@ public class EmployeeService implements EmployeeServiceInterf {
     }
     @Override
     // Поиск сотрудника
-    public Employee findEmployee(String name, String surname, String department, int salary, int id) {
+    public String findEmployee(String name, String surname) {
         var kye = name + "_" + surname;
-        var e = new Employee(name,surname,department,salary,id);
+        var e = new Employee(name,surname);
         if (employees.containsKey(kye)) {
 
         }else {
@@ -61,6 +61,41 @@ public class EmployeeService implements EmployeeServiceInterf {
     // Получение количества сотрудников в фирме
     public int getNumberOfEmployees() {
         return employees.size();
+    }
+
+    public String maxSalary(int id){
+        Employee maxEmployee = null;
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i] != null) {
+                if (maxEmployee == null || employees[i].getSalary() > maxEmployee.getSalary()) {
+                    maxEmployee = employees[i];
+                }
+            }
+        }
+
+        return maxEmployee;
+    }
+    public String minSalary(int id){
+        Employee minEmployee = null;
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i] != null) {
+                if (minEmployee == null || employees[i].getSalary() < minEmployee.getSalary()) {
+                    minEmployee = employees[i];
+                }
+            }
+        }
+
+        return minEmployee;
+
+    }
+    public String allId(int id){int count = 0;
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i] != null) {
+                count++;
+            }
+        }
+        return count;
+    }
     }
 
 

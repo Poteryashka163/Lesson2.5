@@ -18,8 +18,8 @@ public class EmployeeController {
         return "Добро пожаловать в бугалтерскую книгу.";
     }
     @GetMapping(path = "/add")
-    public Employee add(@RequestParam String name, @RequestParam String surname,@RequestParam String department,@RequestParam int salary,@RequestParam int id) throws EmployeeStorageIsFullException,EmployeeAlreadyAddedException {
-        return employeeService.addEmployee(name,surname,department,salary,id);
+    public String add(@RequestParam String name, @RequestParam String surname,@RequestParam String department,@RequestParam int salary,@RequestParam int id) throws EmployeeStorageIsFullException,EmployeeAlreadyAddedException {
+        return "Сотрудник : "+employeeService.addEmployee(name,surname,department,salary,id)+" добавлен.";
     }
     @GetMapping(path = "/del")
     public Employee del(@RequestParam String name,@RequestParam String surname) throws EmployeeNotFoundException {
@@ -38,15 +38,15 @@ public class EmployeeController {
 
 
     @GetMapping(path = "/departments/max-salary")
-    public Employee maxSalary (@RequestParam int id){
+    public String maxSalary (@RequestParam int id){
         return null;
     }
     @GetMapping(path = "/departments/min-salary")
-    public Employee minSalary (@RequestParam int id){
+    public String minSalary (@RequestParam int id){
         return null;
     }
     @GetMapping(path = "/departments/all")
-    public Employee allId (@RequestParam int id){
+    public String allId (@RequestParam int id){
         return null;
     }
     @GetMapping(path = "/all")
