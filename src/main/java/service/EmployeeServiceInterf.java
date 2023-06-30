@@ -1,9 +1,9 @@
-package com.Horns.Hooves.Employee;
+package service;
 
 public interface EmployeeServiceInterf {
 
     // Добавление сотрудника
-    String addEmployee(String name, String surname, String department, int salary, int id);
+    String addEmployee(String name, String surname, int salary, int departmentId);
 
     // Удаление сотрудника
    String delEmployee(String name, String surname);
