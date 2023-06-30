@@ -25,13 +25,13 @@ public class EmployeeService implements EmployeeServiceInterf {
         if (employees.size() < MAX_EMPLOYEES) {
             employees.put(kye,e);
             return e.getSurname()+" "+ e.getName()+" "+"Отдел №"+" "+ e.getDepartmentId();}
+
         else if (employees.containsKey(kye)){
             throw new EmployeeAlreadyAddedException("Такой сотрудки уже есть в списке");
         }
         else {
             throw new EmployeeStorageIsFullException("Достигнуто максимальное количество сотрудников.");
         }
-
     }
     @Override
     // Удаление сотрудника

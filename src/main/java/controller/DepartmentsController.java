@@ -13,15 +13,20 @@ public class DepartmentsController {
         this.departmentsService=departmentsService;}
     @GetMapping(path = "/max-salary")
     public String maxSalary (@RequestParam int departmentId){
-        return null;
+        return departmentsService.getMaxSalaryEmployeeByDepartmentNumber(departmentId).toString();
     }
     @GetMapping(path = "/min-salary")
     public String minSalary (@RequestParam int departmentId){
-        return null;
+        return departmentsService.getMinSalaryEmployeeByDepartmentNumber(departmentId).toString();
     }
     @GetMapping(path = "/all")
     public String allId (@RequestParam int departmentId){
-        return null;
+            if (departmentId >=0 ) {
+                return departmentsService.getEmployeesByDepartment(departmentId).toString();
+            } else {
+                return "Вернуть всех сотрудников";
+            }
+        }
     }
 
-}
+
