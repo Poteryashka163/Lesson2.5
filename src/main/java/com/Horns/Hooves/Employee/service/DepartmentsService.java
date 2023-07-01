@@ -32,16 +32,16 @@ public class DepartmentsService implements DepartmentServiceInterf {
                 .min(Comparator.comparing(Employee::getSalary));
         return result.orElse(null);
     }
-    public List<Employee> getEmployeesByDepartment(String departmentId) {
+    public List<Employee> getEmployeesByDepartment(Integer departmentId) {
         List<Employee> result = getList().stream()
-                .filter(e -> e.getDepartmentId()==Integer.parseInt(departmentId))
+                .filter(e -> e.getDepartmentId()==departmentId)
                 .collect(Collectors.toList());
         return result;
     }
-    public Map<Integer, List<Employee>> getAllEmployeesByDepartment() {
+    public Collection<Employee> getAllEmployeesByDepartment() {
         Map<Integer, List<Employee>> result = getList().stream()
                 .collect(Collectors.groupingBy(Employee::getDepartmentId));
-        return result;
+        return getAllEmployeesByDepartment();
     }
 
 }
