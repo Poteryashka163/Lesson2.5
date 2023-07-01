@@ -38,10 +38,10 @@ public class DepartmentsService implements DepartmentServiceInterf {
                 .collect(Collectors.toList());
         return result;
     }
-    public Collection<Employee> getAllEmployeesByDepartment() {
+    public Map<Integer, List<Employee>> getAllEmployeesByDepartment() {
         Map<Integer, List<Employee>> result = getList().stream()
                 .collect(Collectors.groupingBy(Employee::getDepartmentId));
-        return getAllEmployeesByDepartment();
+        return result;
     }
 
 }
