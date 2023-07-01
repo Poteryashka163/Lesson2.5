@@ -1,9 +1,9 @@
-package controller;
-import exception.EmployeeAlreadyAddedException;
-import exception.EmployeeStorageIsFullException;
-import service.EmployeeService;
-import exception.EmployeeNotFoundException;
-import object.Employee;
+package com.Horns.Hooves.Employee.controller;
+import com.Horns.Hooves.Employee.exception.EmployeeAlreadyAddedException;
+import com.Horns.Hooves.Employee.exception.EmployeeStorageIsFullException;
+import com.Horns.Hooves.Employee.service.EmployeeService;
+import com.Horns.Hooves.Employee.exception.EmployeeNotFoundException;
+import com.Horns.Hooves.Employee.object.Employee;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

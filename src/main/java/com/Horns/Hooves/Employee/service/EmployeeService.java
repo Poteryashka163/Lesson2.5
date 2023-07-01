@@ -1,8 +1,8 @@
-package service;
-import exception.EmployeeAlreadyAddedException;
-import exception.EmployeeNotFoundException;
-import exception.EmployeeStorageIsFullException;
-import object.Employee;
+package com.Horns.Hooves.Employee.service;
+import com.Horns.Hooves.Employee.exception.EmployeeAlreadyAddedException;
+import com.Horns.Hooves.Employee.exception.EmployeeNotFoundException;
+import com.Horns.Hooves.Employee.exception.EmployeeStorageIsFullException;
+import com.Horns.Hooves.Employee.object.Employee;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -55,7 +55,6 @@ public class EmployeeService implements EmployeeServiceInterf {
         }else {
             throw new EmployeeNotFoundException("Сотрудник не найден.");
         }
-
     }
 
     // Получение списка всех сотрудников

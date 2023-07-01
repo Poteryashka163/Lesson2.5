@@ -1,5 +1,5 @@
-package controller;
-import service.DepartmentsService;
+package com.Horns.Hooves.Employee.controller;
+import com.Horns.Hooves.Employee.service.DepartmentsService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,13 +20,14 @@ public class DepartmentsController {
         return departmentsService.getMinSalaryEmployeeByDepartmentNumber(departmentId).toString();
     }
     @GetMapping(path = "/all")
-    public String allId (@RequestParam int departmentId){
-            if (departmentId >=0 ) {
+    public String allId (@RequestParam(defaultValue = "departmentId") String departmentId){
+            if (departmentId.equals("departmentId")) {
                 return departmentsService.getEmployeesByDepartment(departmentId).toString();
             } else {
-                return "Вернуть всех сотрудников";
+                return departmentsService.getAllEmployeesByDepartment().toString();
             }
         }
+
     }
 
 

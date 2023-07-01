@@ -1,4 +1,4 @@
-package service;
+package com.Horns.Hooves.Employee.service;
 
 public interface EmployeeServiceInterf {
 

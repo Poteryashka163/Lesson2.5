@@ -1,6 +1,6 @@
-package service;
+package com.Horns.Hooves.Employee.service;
 
-import object.Employee;
+import com.Horns.Hooves.Employee.object.Employee;
 
 public interface DepartmentServiceInterf {
 

@@ -1,4 +1,4 @@
-package exception;
+package com.Horns.Hooves.Employee.exception;
 
 public class EmployeeStorageIsFullException extends RuntimeException {
     public EmployeeStorageIsFullException() {

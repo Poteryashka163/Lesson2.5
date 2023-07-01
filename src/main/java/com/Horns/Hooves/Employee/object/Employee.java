@@ -1,4 +1,4 @@
-package object;
+package com.Horns.Hooves.Employee.object;
 import java.util.Objects;
 
 public class Employee {
