@@ -33,6 +33,6 @@ public class DepartmentsController {
         return departmentsService.getEmployeesByDepartment(departmentId);
     }
 
-    }
+}
 
 

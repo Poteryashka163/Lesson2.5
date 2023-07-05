@@ -1,8 +1,11 @@
 package com.Horns.Hooves.Employee.service;
+
 import com.Horns.Hooves.Employee.exception.EmployeeAlreadyAddedException;
+import com.Horns.Hooves.Employee.exception.EmployeeDataValidatorException;
 import com.Horns.Hooves.Employee.exception.EmployeeNotFoundException;
 import com.Horns.Hooves.Employee.exception.EmployeeStorageIsFullException;
 import com.Horns.Hooves.Employee.object.Employee;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -66,7 +69,41 @@ public class EmployeeService implements EmployeeServiceInterf {
     public int getNumberOfEmployees() {
         return employees.size();
     }
-    
+
+
+
+
+
+
+
+    public static boolean isValid(String employeeName) {
+        if (StringUtils.isNumeric(employeeName)) {
+            return false;
+        }
+
+        if (!StringUtils.isAlpha(employeeName)) {
+            return false;
+        }
+
+        if (!StringUtils.isAllUpperCase(employeeName.substring(0, 1))) {
+            return false;
+        }
+
+        return true;
+    }
+
+
+
+
+    public static void validateEmployeeData(String firstName, String lastName) {
+        if (!isValidName(firstName) || !isValidName(lastName)) {
+            throw new EmployeeDataValidatorException("Invalid employee data");
+        }
+    }
+
+    private static boolean isValidName(String name) {
+        return StringUtils.isNotBlank(name) && StringUtils.isAlpha(name) && StringUtils.isAllUpperCase(name.substring(0, 1));
+    }
 
 }
 
