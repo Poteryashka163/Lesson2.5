@@ -22,7 +22,7 @@ public class EmployeeService implements EmployeeServiceInterf {
     // Добавление сотрудника
     @Override
     public String addEmployee(String name, String surname, int salary, int departmentId) {
-        if (!isValidName(name) || !isValidName(surname)) {
+        if (!isValidName(name) || !isValidSurname(surname)) {
             throw new EmployeeDataValidatorException("Invalid employee data");
         }
         var kye = name + "_" + surname;
@@ -75,7 +75,7 @@ public class EmployeeService implements EmployeeServiceInterf {
     private static boolean isValidName(String name) {
         return StringUtils.isNotBlank(name) && StringUtils.isAlpha(name) && StringUtils.isAllUpperCase(name.substring(0, 1));
     }
-    private static boolean isValidNameSurname(String surname) {
+    private static boolean isValidSurname(String surname) {
         return StringUtils.isNotBlank(surname) && StringUtils.isAlpha(surname) && StringUtils.isAllUpperCase(surname.substring(0, 1));
     }
 
