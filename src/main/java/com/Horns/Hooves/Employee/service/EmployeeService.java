@@ -14,7 +14,6 @@ import java.util.*;
 @Service
 public class EmployeeService implements EmployeeServiceInterf {
     public Map<String, Employee> employees;
-    private final int MAX_EMPLOYEES = 10;
 
     // Создаем список
     public EmployeeService() {
@@ -23,8 +22,12 @@ public class EmployeeService implements EmployeeServiceInterf {
     // Добавление сотрудника
     @Override
     public String addEmployee(String name, String surname, int salary, int departmentId) {
+        if (!isValidName(name) || !isValidName(surname)) {
+            throw new EmployeeDataValidatorException("Invalid employee data");
+        }
         var kye = name + "_" + surname;
         var e = new Employee(name,surname,salary,departmentId);
+        int MAX_EMPLOYEES = 10;
         if (employees.size() < MAX_EMPLOYEES) {
             employees.put(kye,e);
             return e.getSurname()+" "+ e.getName()+" "+"Отдел №"+" "+ e.getDepartmentId();}
@@ -69,40 +72,11 @@ public class EmployeeService implements EmployeeServiceInterf {
     public int getNumberOfEmployees() {
         return employees.size();
     }
-
-
-
-
-
-
-
-    public static boolean isValid(String employeeName) {
-        if (StringUtils.isNumeric(employeeName)) {
-            return false;
-        }
-
-        if (!StringUtils.isAlpha(employeeName)) {
-            return false;
-        }
-
-        if (!StringUtils.isAllUpperCase(employeeName.substring(0, 1))) {
-            return false;
-        }
-
-        return true;
-    }
-
-
-
-
-    public static void validateEmployeeData(String firstName, String lastName) {
-        if (!isValidName(firstName) || !isValidName(lastName)) {
-            throw new EmployeeDataValidatorException("Invalid employee data");
-        }
-    }
-
     private static boolean isValidName(String name) {
         return StringUtils.isNotBlank(name) && StringUtils.isAlpha(name) && StringUtils.isAllUpperCase(name.substring(0, 1));
+    }
+    private static boolean isValidNameSurname(String surname) {
+        return StringUtils.isNotBlank(surname) && StringUtils.isAlpha(surname) && StringUtils.isAllUpperCase(surname.substring(0, 1));
     }
 
 }

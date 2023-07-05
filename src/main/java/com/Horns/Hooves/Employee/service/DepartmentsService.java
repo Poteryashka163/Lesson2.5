@@ -5,7 +5,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-
 public class DepartmentsService implements DepartmentServiceInterf {
     public Collection<Employee> getList(){
         return new ArrayList<>(employeeService.employees.values());
@@ -31,15 +30,13 @@ public class DepartmentsService implements DepartmentServiceInterf {
         return result.orElse(null);
     }
     public List<Employee> getEmployeesByDepartment(Integer departmentId) {
-        List<Employee> result = getList().stream()
+        return getList().stream()
                 .filter(e -> e.getDepartmentId()==departmentId)
                 .collect(Collectors.toList());
-        return result;
     }
     public Map<Integer, List<Employee>> getAllEmployeesByDepartment() {
-        Map<Integer, List<Employee>> result = getList().stream()
+        return getList().stream()
                 .collect(Collectors.groupingBy(Employee::getDepartmentId));
-        return result;
     }
 
 }
