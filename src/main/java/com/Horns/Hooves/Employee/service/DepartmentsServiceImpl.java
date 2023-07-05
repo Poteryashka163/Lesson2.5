@@ -1,20 +1,19 @@
-﻿package com.Horns.Hooves.Employee.service;
+package com.Horns.Hooves.Employee.service;
 import com.Horns.Hooves.Employee.object.Employee;
 import org.springframework.stereotype.Service;
 import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-
-public class DepartmentsService implements DepartmentServiceInterf {
+public class DepartmentsServiceImpl implements DepartmentService {
     public Collection<Employee> getList(){
-        return new ArrayList<>(employeeService.employees.values());
+        return new ArrayList<>(employeeServiceImpl.employees.values());
     }
 
 
-    private final EmployeeService employeeService;
-    public DepartmentsService (EmployeeService employeeService){
-        this.employeeService=employeeService;
+    private final EmployeeServiceImpl employeeServiceImpl;
+    public DepartmentsServiceImpl(EmployeeServiceImpl employeeServiceImpl){
+        this.employeeServiceImpl = employeeServiceImpl;
     }
 
     @Override
@@ -31,15 +30,13 @@ public class DepartmentsService implements DepartmentServiceInterf {
         return result.orElse(null);
     }
     public List<Employee> getEmployeesByDepartment(Integer departmentId) {
-        List<Employee> result = getList().stream()
+        return getList().stream()
                 .filter(e -> e.getDepartmentId()==departmentId)
                 .collect(Collectors.toList());
-        return result;
     }
     public Map<Integer, List<Employee>> getAllEmployeesByDepartment() {
-        Map<Integer, List<Employee>> result = getList().stream()
+        return getList().stream()
                 .collect(Collectors.groupingBy(Employee::getDepartmentId));
-        return result;
     }
 
 }

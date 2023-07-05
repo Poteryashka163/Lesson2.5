@@ -1,4 +1,6 @@
 package com.Horns.Hooves.Employee.object;
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.Objects;
 
 public class Employee {
@@ -12,8 +14,8 @@ public class Employee {
         this.surname = surname;
     }
     public Employee(String name,String surname,int salary,int departmentId) {
-        this.name = name;
-        this.surname = surname;
+        this.name = StringUtils.capitalize(name);
+        this.surname = StringUtils.capitalize(surname);
         this.salary = salary;
         this.departmentId=departmentId;
 
